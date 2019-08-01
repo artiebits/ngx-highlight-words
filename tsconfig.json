@@ -18,6 +18,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-highlight-words": [
+        "dist/ngx-highlight-words"
+      ],
+      "ngx-highlight-words/*": [
+        "dist/ngx-highlight-words/*"
+      ]
+    }
   }
 }

@@ -134,6 +134,41 @@
           }
         }
       }
+    },
+    "ngx-highlight-words": {
+      "projectType": "library",
+      "root": "projects/ngx-highlight-words",
+      "sourceRoot": "projects/ngx-highlight-words/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-highlight-words/tsconfig.lib.json",
+            "project": "projects/ngx-highlight-words/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-highlight-words/src/test.ts",
+            "tsConfig": "projects/ngx-highlight-words/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-highlight-words/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-highlight-words/tsconfig.lib.json",
+              "projects/ngx-highlight-words/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-highlight-words-app"
