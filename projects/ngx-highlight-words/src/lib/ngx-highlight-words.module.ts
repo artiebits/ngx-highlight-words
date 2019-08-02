@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { NgxHighlightWordsComponent } from './ngx-highlight-words.component';
+import { NgxHighlightWordsDirective } from './ngx-highlight-words.directive';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [NgxHighlightWordsComponent],
+  declarations: [NgxHighlightWordsDirective],
   imports: [
     CommonModule
   ],
-  exports: [NgxHighlightWordsComponent]
+  exports: [NgxHighlightWordsDirective]
 })
 export class NgxHighlightWordsModule {}

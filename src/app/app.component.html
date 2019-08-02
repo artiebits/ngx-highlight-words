@@ -3,55 +3,58 @@
 <h2>Basic usage</h2>
 
 <textarea highlight-js [lang]="'typescript'">
-<ngx-highlight-words
-  [textToHighlight]="'This is some text to highlight.'"
-  [searchWords]="['this', 'to']">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['this', 'highlight']">
+  This is some text to highlight.
+</p>
 </textarea>
 
 Result:<br>
-<ngx-highlight-words
-  [textToHighlight]="'This is some text to highlight.'"
-  [searchWords]="['this', 'to']">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['this', 'highlight']">
+  This is some text to highlight.
+</p>
+
+And it supports markup, not only plain text!
+
+<textarea highlight-js [lang]="'typescript'">
+<p ngxHighlightWords [searchWords]="['this', 'highlight']">
+  This <i>is</i> some <strong>text</strong> to highlight.
+</p>
+</textarea>
+
+Result:<br>
+<p ngxHighlightWords [searchWords]="['this', 'highlight']">
+  This <i>is</i> some <u>text</u> to <strong>highlight</strong>.
+</p>
 
 <hr>
 
 <h2>With regex in `searchWords`</h2>
 
 <textarea highlight-js [lang]="'typescript'">
-<ngx-highlight-words
-  [textToHighlight]="'The Federation\'s gone; the Borg is everywhere!'"
-  [searchWords]="['^the']"
-  [autoEscape]="false">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['^the']" [autoEscape]="false">
+  The Federation's gone; the Borg is everywhere!
+</p>
 </textarea>
 
 Result:<br>
-<ngx-highlight-words
-  [textToHighlight]="'The Federation\'s gone; the Borg is everywhere!'"
-  [searchWords]="['^the']"
-  [autoEscape]="false">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['^the']" [autoEscape]="false">
+  The Federation's gone; the Borg is everywhere!
+</p>
 
 <hr>
 
 <h2>Case sensitive</h2>
 
 <textarea highlight-js [lang]="'typescript'">
-<ngx-highlight-words
-  [textToHighlight]="'The Federation\'s gone; the Borg is everywhere!'"
-  [searchWords]="['the']"
-  [caseSensitive]="true">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['the']" [caseSensitive]="true">
+  The Federation's gone; the Borg is everywhere!
+</p>
 </textarea>
 
 Result:<br>
-<ngx-highlight-words
-  [textToHighlight]="'The Federation\'s gone; the Borg is everywhere!'"
-  [searchWords]="['the']"
-  [caseSensitive]="true">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['the']" [caseSensitive]="true">
+  The Federation's gone; the Borg is everywhere!
+</p>
 
 <hr>
 
@@ -62,14 +65,12 @@ import { Component } from '@angular/core';
 import { clean } from 'diacritic';
 
 @Component({
-selector: 'app-root',
-template: `
-<ngx-highlight-words
-  [textToHighlight]="'Déjà vu'"
-  [searchWords]="['deja']"
-  [sanitize]="removeDiacritics">
-</ngx-highlight-words>
-`,
+  selector: 'app-root',
+  template: `
+  <p ngxHighlightWords [searchWords]="['deja']" [sanitize]="removeDiacritics">
+    Déjà vu
+  </p>
+  `,
 })
 export class AppComponent {
   removeDiacritics(text: string): string {
@@ -79,34 +80,27 @@ export class AppComponent {
 </textarea>
 
 Result:<br>
-<ngx-highlight-words
-  [textToHighlight]="'Déjà vu'"
-  [searchWords]="['deja']"
-  [sanitize]="removeDiacritics">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['deja']" [sanitize]="removeDiacritics">
+  Déjà vu
+</p>
 
 <hr>
 
-<h2>With custom <code>findChunks</code></h2>
+<h2>With custom <code>findChunks</code> function</h2>
 
 In this example <code>ngx-highlight-words</code> matches only at beginning of words (word begins after white space or -).
 So, it this example it won't match <code>light</code>.
 See <code>findChunksAtBeginningOfWords</code> implementation in <code>app.component.ts</code>.
 
 <textarea highlight-js [lang]="'typescript'">
-<ngx-highlight-words
-  [textToHighlight]="'This is some text to highlight.'"
-  [searchWords]="['this', 'light']"
-  [findChunks]="findChunksAtBeginningOfWords">
-</ngx-highlight-words>
-
+<p ngxHighlightWords [searchWords]="['this', 'light']" [findChunks]="findChunksAtBeginningOfWords">
+  This is some text to highlight.
+</p>
 </textarea>
 
 Result:<br>
-<ngx-highlight-words
-  [textToHighlight]="'This is some text to highlight.'"
-  [searchWords]="['this', 'light']"
-  [findChunks]="findChunksAtBeginningOfWords">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['this', 'light']" [findChunks]="findChunksAtBeginningOfWords">
+  This is some text to highlight.
+</p>
 
 
