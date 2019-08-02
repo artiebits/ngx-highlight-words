@@ -1,5 +1,7 @@
 # ngx-highlight-words
 
+[![Build Status](https://travis-ci.org/artiebits/ngx-highlight-words.svg?branch=master)](https://travis-ci.org/artiebits/ngx-highlight-words)
+
 Angular component to highlight words within a text.
 
 ## Usage
