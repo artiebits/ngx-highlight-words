@@ -1,6 +1,6 @@
 {
   "name": "ngx-highlight-words",
-  "description": "Angular component to highlight words within a larger body of text",
+  "description": "Angular directive to highlight words within a larger body of text",
   "version": "1.0.1",
   "license": "MIT",
   "repository": {

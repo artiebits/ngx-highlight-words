@@ -2,18 +2,16 @@
 
 [![Build Status](https://travis-ci.org/artiebits/ngx-highlight-words.svg?branch=master)](https://travis-ci.org/artiebits/ngx-highlight-words)
 
-Angular component to highlight words within a text.
+Angular directive to highlight words within a text.
 
 ## Usage
 
 Just provide it with an array of search terms and a body of text to highlight.
 
 ```html
-<ngx-highlight-words
-  [textToHighlight]="'This is some text to highlight.'"
-  [searchWords]="['this', 'to']"
-  highlightClassName="YourHighlightClass">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['this', 'to']" highlightClassName="YourHighlightClass">
+  This is some text to highlight.
+</p>
 ```
 
 And the `ngx-highlight-words` will mark all occurrences of search terms within the text:
@@ -37,38 +35,32 @@ And the `ngx-highlight-words` will mark all occurrences of search terms within t
 #### With regex in `searchWords`
 
 ```html
-<ngx-highlight-words
-  [textToHighlight]="'The Federation\'s gone; the Borg is everywhere!'"
-  [searchWords]="['^the']"
-  [autoEscape]="false">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['^the']" [autoEscape]="false">
+  The Federation's gone; the Borg is everywhere!
+</p>
 ```
 
 #### Case sensitive
 
 ```html
-<ngx-highlight-words
-  [textToHighlight]="'The Federation\'s gone; the Borg is everywhere!'"
-  [searchWords]="['the']"
-  [caseSensitive]="true">
-</ngx-highlight-words>
+<p ngxHighlightWords [searchWords]="['the']" [caseSensitive]="true">
+  The Federation's gone; the Borg is everywhere!
+</p>
 ```
 
 #### Sanitize
 
 ```typescript
-import { Component } from "@angular/core";
-import { clean } from "diacritic";
+import { Component } from '@angular/core';
+import { clean } from 'diacritic';
 
 @Component({
-  selector: "app-root",
+  selector: 'app-root',
   template: `
-    <ngx-highlight-words
-      [textToHighlight]="'Déjà vu'"
-      [searchWords]="['deja']"
-      [sanitize]="removeDiacritics">
-    </ngx-highlight-words>
-  `
+  <p ngxHighlightWords [searchWords]="['deja']" [sanitize]="removeDiacritics">
+    Déjà vu
+  </p>
+  `,
 })
 export class AppComponent {
   removeDiacritics(text: string): string {
