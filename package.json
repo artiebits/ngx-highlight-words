@@ -12,7 +12,8 @@
     "start": "ng serve",
     "copyReadme": "cp README.md ./dist/ngx-highlight-words",
     "build": "ng build ngx-highlight-words && npm run copyReadme",
-    "test": "ng test ngx-highlight-words --watch=false",
+    "test": "ng test ngx-highlight-words",
+    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint ngx-highlight-words",
     "e2e": "ng e2e"
   },
