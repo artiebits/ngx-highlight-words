@@ -8,7 +8,7 @@ Angular component to highlight words within a text.
 
 Just provide it with an array of search terms and a body of text to highlight.
 
-```typescript
+```html
 <ngx-highlight-words
   [textToHighlight]="'This is some text to highlight.'"
   [searchWords]="['this', 'to']"
@@ -36,7 +36,7 @@ And the `ngx-highlight-words` will mark all occurrences of search terms within t
 
 #### With regex in `searchWords`
 
-```typescript
+```html
 <ngx-highlight-words
   [textToHighlight]="'The Federation\'s gone; the Borg is everywhere!'"
   [searchWords]="['^the']"
@@ -46,7 +46,7 @@ And the `ngx-highlight-words` will mark all occurrences of search terms within t
 
 #### Case sensitive
 
-```typescript
+```html
 <ngx-highlight-words
   [textToHighlight]="'The Federation\'s gone; the Borg is everywhere!'"
   [searchWords]="['the']"
@@ -66,8 +66,7 @@ import { clean } from "diacritic";
     <ngx-highlight-words
       [textToHighlight]="'Déjà vu'"
       [searchWords]="['deja']"
-      [sanitize]="removeDiacritics"
-    >
+      [sanitize]="removeDiacritics">
     </ngx-highlight-words>
   `
 })
@@ -106,4 +105,4 @@ export class AppModule { }
 
 ## License
 
-MIT
+[MIT](/LICENSE)
