@@ -2,6 +2,8 @@ container:
   image: node:latest
 
 check_task:
+  env:
+    CHROME_BIN: /usr/bin/chromium-browser
   node_modules_cache:
     folder: node_modules
     fingerprint_script: cat package-lock.json
