@@ -1,0 +1,14 @@
+container:
+  image: node:latest
+
+check_task:
+  node_modules_cache:
+    folder: node_modules
+    fingerprint_script: cat package-lock.json
+    populate_script: npm install
+
+  lint_script: npm run lint
+
+  test_script: npm run test
+
+  build_script: npm run build
