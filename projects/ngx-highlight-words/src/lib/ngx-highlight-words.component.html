@@ -1,3 +1,5 @@
 <span
-  [ngClass]="chunk.highlight && highlightClassName"
-  *ngFor="let chunk of chunks">{{ textToHighlight.substr(chunk.start, chunk.end - chunk.start) }}</span>
+  [ngClass]="chunk.highlight ? highlightClassName : ''"
+  *ngFor="let chunk of chunks"
+  >{{ textToHighlight.substr(chunk.start, chunk.end - chunk.start) }}</span
+>

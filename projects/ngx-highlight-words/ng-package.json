@@ -3,8 +3,5 @@
   "dest": "../../dist/ngx-highlight-words",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "whitelistedNonPeerDependencies": [
-    "highlight-words-core"
-  ]
+  }
 }
