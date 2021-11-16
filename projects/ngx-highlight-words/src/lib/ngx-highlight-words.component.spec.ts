@@ -1,24 +1,31 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NgxHighlightWordsComponent } from './ngx-highlight-words.component';
 
 describe('NgxHighlightWordsComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [NgxHighlightWordsComponent]
-    }).compileComponents();
-  }));
+  let component: NgxHighlightWordsComponent;
+  let fixture: ComponentFixture<NgxHighlightWordsComponent>;
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [NgxHighlightWordsComponent],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(NgxHighlightWordsComponent);
+      component = fixture.componentInstance;
+
+    })
+  );
 
   function setup({
     textToHighlight = '',
     searchWords = [],
     highlightClassName = 'highlight',
     caseSensitive = false,
-    autoEscape = true
-  } = {}) {
-    const fixture: ComponentFixture<NgxHighlightWordsComponent> = TestBed.createComponent(
-      NgxHighlightWordsComponent
-    );
+    autoEscape = true,
+  }) {
+    const fixture: ComponentFixture<NgxHighlightWordsComponent> =
+      TestBed.createComponent(NgxHighlightWordsComponent);
     const component: NgxHighlightWordsComponent = fixture.componentInstance;
     component.textToHighlight = textToHighlight;
     component.searchWords = searchWords;
@@ -32,43 +39,33 @@ describe('NgxHighlightWordsComponent', () => {
   }
 
   it('highlights words within a text', () => {
-    const textToHighlight = 'This is some text to highlight.';
-    const searchWords = ['this', 'to'];
-    const { fixture } = setup({
-      textToHighlight,
-      searchWords
-    });
+    component.textToHighlight = 'This is some text to highlight';
+    component.searchWords = ['this', 'to'];
+    
+    fixture.detectChanges();
 
-    const compiled = fixture.debugElement.nativeElement;
-    const highlightedElements = compiled.querySelectorAll('.highlight');
+    const highlightedElements = fixture.debugElement.nativeElement.querySelectorAll('.highlight');
     expect(highlightedElements[0].textContent).toBe('This');
     expect(highlightedElements[1].textContent).toBe('to');
   });
 
   it('applies CSS class name to highlighted text', () => {
-    const textToHighlight = 'This is some text to highlight.';
-    const searchWords = ['this'];
-    const highlightClassName = 'MyHighlightClass';
-    const { fixture } = setup({
-      textToHighlight,
-      searchWords,
-      highlightClassName
-    });
+    component.textToHighlight = 'This is some text to highlight';
+    component.searchWords = ['this'];
+    component.highlightClassName = 'MyHighlightClass';
 
-    const compiled = fixture.debugElement.nativeElement;
-    const highlightedElement = compiled.querySelector('.MyHighlightClass');
+    fixture.detectChanges();
+
+    const highlightedElement = fixture.debugElement.nativeElement.querySelector('.MyHighlightClass');
     expect(highlightedElement).toBeTruthy();
   });
 
   it('should not escape regex in search words', () => {
-    const textToHighlight = 'The Federation\'s gone; the Borg is everywhere!';
-    const searchWords = ['^the'];
-    const autoEscape = false;
-    const { fixture } = setup({
-      textToHighlight,
-      searchWords,
-      autoEscape
-    });
+    component.textToHighlight = "The Federation's gone; the Borg is everywhere!";
+    component.searchWords = ['^the'];
+    component.autoEscape = false;
+
+    fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;
     const highlightedElements = compiled.querySelectorAll('.highlight');
@@ -77,14 +74,11 @@ describe('NgxHighlightWordsComponent', () => {
   });
 
   it('should be case sensitive', () => {
-    const textToHighlight = 'The Federation\'s gone; the Borg is everywhere!';
-    const searchWords = ['the'];
-    const caseSensitive = true;
-    const { fixture } = setup({
-      textToHighlight,
-      searchWords,
-      caseSensitive
-    });
+    component.textToHighlight = "The Federation's gone; the Borg is everywhere!";
+    component.searchWords = ['the'];
+    component.caseSensitive = true;
+
+    fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;
     const highlightedElements = compiled.querySelectorAll('.highlight');
